@@ -17,19 +17,38 @@ using Windows.UI.Xaml.Navigation;
 
 namespace VIN_Decode
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
         public MainPage()
         {
             this.InitializeComponent();
+            var appView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
+            appView.TitleBar.BackgroundColor = Windows.UI.Colors.Black;
+            appView.TitleBar.InactiveBackgroundColor = Windows.UI.Colors.Black;
+            appView.TitleBar.ButtonBackgroundColor = Windows.UI.Colors.Black;
+            appView.TitleBar.ButtonHoverForegroundColor = Windows.UI.Colors.Black;
+            appView.TitleBar.ButtonHoverBackgroundColor = Windows.UI.Colors.WhiteSmoke;
+            appView.TitleBar.ButtonPressedBackgroundColor = Windows.UI.Colors.WhiteSmoke;
+            appView.TitleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.White;
         }
 
-        private void checkBtn_Click(object sender, RoutedEventArgs e)
+        private async void checkBtn_Click(object sender, RoutedEventArgs e)
         {
+            //Send request
+            RootObject myVin = await Decode.GetInfo(vin.Text, year.Text);
 
+            //Return Results
+            resultsBox.Text = "Manufacturer: " + myVin.Results[0].Manufacturer +
+                "\n" + "Plant City: " + myVin.Results[0].PlantCity +
+                "\n" + "Plant Country: " + myVin.Results[0].PlantCountry +
+                "\n" + "Model: " + myVin.Results[0].Model +
+                "\n" + "Model Year: " + myVin.Results[0].ModelYear +
+                "\n" + "Body Class: " + myVin.Results[0].BodyClass +
+                "\n" + "Engine Horsepower: " + myVin.Results[0].EngineHP +
+                "\n" + "Fuel: " + myVin.Results[0].VehicleType +
+                "\n" + "Fuel: " + myVin.Results[0].FuelTypePrimary +
+                "\n" + "Doors: " + myVin.Results[0].Doors +
+                "\n" + "Powered by the NHTSA API";
         }
     }
 }

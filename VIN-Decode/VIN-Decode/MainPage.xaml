@@ -13,7 +13,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <RelativePanel Background="#FF111111">
-            <TextBox x:Name="TitleBox" Text="VIN Decoder" FontSize="24" Foreground="White" RelativePanel.AlignHorizontalCenterWithPanel="True" Background="#66000000" BorderBrush="Black" Margin="0,10" FontFamily="Bauhaus 93"/>
+            <TextBlock x:Name="TitleBox" Text="VIN Decoder" FontSize="24" Foreground="White" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,10" FontFamily="Bauhaus 93"/>
         </RelativePanel>
         <RelativePanel Grid.Row="1">
             <StackPanel x:Name="vinStack" Orientation="Horizontal" Margin="0,20,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True">
