@@ -34,21 +34,45 @@ namespace VIN_Decode
 
         private async void checkBtn_Click(object sender, RoutedEventArgs e)
         {
-            //Send request
-            RootObject myVin = await Decode.GetInfo(vin.Text, year.Text);
 
-            //Return Results
-            resultsBox.Text = "Manufacturer: " + myVin.Results[0].Manufacturer +
-                "\n" + "Plant City: " + myVin.Results[0].PlantCity +
-                "\n" + "Plant Country: " + myVin.Results[0].PlantCountry +
-                "\n" + "Model: " + myVin.Results[0].Model +
-                "\n" + "Model Year: " + myVin.Results[0].ModelYear +
-                "\n" + "Body Class: " + myVin.Results[0].BodyClass +
-                "\n" + "Engine Horsepower: " + myVin.Results[0].EngineHP +
-                "\n" + "Fuel: " + myVin.Results[0].VehicleType +
-                "\n" + "Fuel: " + myVin.Results[0].FuelTypePrimary +
-                "\n" + "Doors: " + myVin.Results[0].Doors +
-                "\n" + "Powered by the NHTSA API";
+            if (vin.Text.Length > 17 || vin.Text.Length < 17)
+            {
+                resultsBox.Text = "VIN Number Length Is Incorrect";
+            }
+
+            int carYear;
+
+            if (int.TryParse(year.Text, out carYear))
+            {
+               if(carYear > DateTime.Today.Year)
+                {
+                    resultsBox.Text = "Invalid Year";
+                }
+                else
+                {
+                    //Send request
+                    RootObject myVin = await Decode.GetInfo(vin.Text, year.Text);
+
+                    //Return Results
+                    resultsBox.Text = "Instructions: If a section is empty that means the manufacturer did not provide those details or are inaccessible." + 
+                        "\n" + "Error code: " + myVin.Results[0].ErrorCode + 
+                        "\n" + "Manufacturer: " + myVin.Results[0].Manufacturer +
+                        "\n" + "Plant City: " + myVin.Results[0].PlantCity +
+                        "\n" + "Plant Country: " + myVin.Results[0].PlantCountry +
+                        "\n" + "Model: " + myVin.Results[0].Model +
+                        "\n" + "Model Year: " + myVin.Results[0].ModelYear +
+                        "\n" + "Body Class: " + myVin.Results[0].BodyClass +
+                        "\n" + "Engine Cylinders: " + myVin.Results[0].EngineCylinders +
+                        "\n" + "Engine Horsepower: " + myVin.Results[0].EngineHP +
+                        "\n" + "Fuel: " + myVin.Results[0].VehicleType +
+                        "\n" + "Fuel: " + myVin.Results[0].FuelTypePrimary +
+                        "\n" + "Doors: " + myVin.Results[0].Doors;
+                }
+            }
+            else
+            {
+                resultsBox.Text = "Invalid Year Format";
+            }
         }
     }
 }
