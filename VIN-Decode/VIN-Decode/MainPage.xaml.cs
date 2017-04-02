@@ -29,7 +29,7 @@ namespace VIN_Decode
             appView.TitleBar.ButtonHoverForegroundColor = Windows.UI.Colors.Black;
             appView.TitleBar.ButtonHoverBackgroundColor = Windows.UI.Colors.WhiteSmoke;
             appView.TitleBar.ButtonPressedBackgroundColor = Windows.UI.Colors.WhiteSmoke;
-            appView.TitleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.White;
+            appView.TitleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Black; 
         }
 
         private async void checkBtn_Click(object sender, RoutedEventArgs e)
@@ -55,7 +55,7 @@ namespace VIN_Decode
 
                     //Return Results
                     resultsBox.Text = "Instructions: If a section is empty that means the manufacturer did not provide those details or are inaccessible." + 
-                        "\n" + "Error code: " + myVin.Results[0].ErrorCode + 
+                        "\n\n" + "Error code: " + myVin.Results[0].ErrorCode + 
                         "\n" + "Manufacturer: " + myVin.Results[0].Manufacturer +
                         "\n" + "Plant City: " + myVin.Results[0].PlantCity +
                         "\n" + "Plant Country: " + myVin.Results[0].PlantCountry +
@@ -66,7 +66,8 @@ namespace VIN_Decode
                         "\n" + "Engine Horsepower: " + myVin.Results[0].EngineHP +
                         "\n" + "Fuel: " + myVin.Results[0].VehicleType +
                         "\n" + "Fuel: " + myVin.Results[0].FuelTypePrimary +
-                        "\n" + "Doors: " + myVin.Results[0].Doors;
+                        "\n" + "Doors: " + myVin.Results[0].Doors +
+                        "\n\n" + "Powered by the NHTSA API";
                 }
             }
             else
