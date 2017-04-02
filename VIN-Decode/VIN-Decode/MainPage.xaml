@@ -32,7 +32,7 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <TextBox x:Name="resultsBox" RelativePanel.Below="checkBtn" TextWrapping="Wrap" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="36,86,38,36.8" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" IsReadOnly="True"/>
+            <TextBox x:Name="resultsBox" RelativePanel.Below="checkBtn" TextWrapping="Wrap" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="36,40,38,36.8" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" IsReadOnly="True"/>
         </RelativePanel>
 
     </Grid>
